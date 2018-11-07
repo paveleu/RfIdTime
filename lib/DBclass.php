@@ -6,7 +6,7 @@ class DB
 	{
 		$dbconf = require 'dbconf.php';
 		$this->connect = mysqli_connect($dbconf['host'], $dbconf['login'], $dbconf['pass'], $dbconf['name']);
-		if(!$conn){
+		if(!$this->connect){
     		echo ("Connection failed: " . mysqli_connect_error());
     		return false;
 		}
