@@ -45,7 +45,7 @@ function insertlog($pracid, $stan ,$data){
 	$conn = new mysqli($dbconf['host'], $dbconf['login'], $dbconf['pass'], $dbconf['name']);
 	if ($conn->connect_error) {
     	die("Connection failed: " . $conn->connect_error);
-	} 
+	}
 	$sql = 'INSERT INTO `log` (`idlog`, `idprac`, `data`, `idoper`) VALUES (NULL, '.$pracid.', "'.$data.'", '.$stan.')';
 	if($conn->query($sql) === TRUE){
     	return true;
@@ -57,26 +57,17 @@ function insertlog($pracid, $stan ,$data){
 
 function controlTime ($date1, $date2)
 {
-	print_r('<br/>');
-	print_r($date1);
-	print_r('<br/>');
-	print_r($date2);
 	$dateTime1 = new DateTime($date1);
 	$dateTime2 = new DateTime($date2);
 	$interval = $dateTime1->diff($dateTime2);
-	print_r('<br/>');
-	var_dump($interval);
-	if ($interval->y > 0) {
-		$interval->m += $interval->y * 12;
-		}
-	if ($interval->m > 0) {
-		$interval->d += $interval->m * 30;
-		}
 	if ($interval->d > 0) {
 		$interval->h += $interval->d * 60;
-		}
+	}
 	$diff = $interval->h . ':' . $interval->i . ':' . $interval->s;
-	print_r('<br/>');
-	var_dump($diff);
+	if($interval->h > 15) {
+		return array('timeDiff' => $diff, 'overNight' => true);
+	} else {
+		return array('timeDiff' => $diff, 'overNight' => false);
+	}
 	
 }
