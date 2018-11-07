@@ -2,8 +2,8 @@
 -- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Nov 07, 2018 at 11:15 AM
+-- Host: localhost:3306
+-- Generation Time: Nov 07, 2018 at 03:12 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -17,14 +17,13 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `log`
+-- Table structure forza table `log`
 --
 
 CREATE TABLE `log` (
   `idlog` int(11) NOT NULL,
   `idprac` int(11) NOT NULL,
-  `data` date NOT NULL,
-  `czas` time NOT NULL,
+  `data` datetime NOT NULL,
   `idoper` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -32,9 +31,8 @@ CREATE TABLE `log` (
 -- Dumping data for table `log`
 --
 
-INSERT INTO `log` (`idlog`, `idprac`, `data`, `czas`, `idoper`) VALUES
-(1, 2, '2018-11-07', '07:00:00', 1),
-(2, 2, '2018-11-07', '19:00:00', 2);
+INSERT INTO `log` (`idlog`, `idprac`, `data`, `idoper`) VALUES
+(1, 2, '2018-11-07 13:50:00', 1);
 
 -- --------------------------------------------------------
 
@@ -139,7 +137,7 @@ ALTER TABLE `rfid`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `idlog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idlog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `oper`

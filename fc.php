@@ -45,7 +45,7 @@ $sql = 'SELECT * FROM log WHERE idprac = "'.$pracid.'" ORDER BY idlog DESC LIMIT
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
 $row = mysqli_fetch_assoc($result);
- return $row['idoper'];
+ return [$row['idoper'], $row['data']];
 
 } else {
     return 1;

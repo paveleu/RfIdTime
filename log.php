@@ -6,11 +6,9 @@ if(isset($_GET['rfid'])){
 	
 	$pracid = getpracidfromrfid($_GET['rfid']); //test czy w pracy
 	$czywpracy = czywpracy($pracid);
-	if($czywpracy == 9){
-		echo $czywpracy;
-	}else{
-		echo $czywpracy;
-	}
+		echo $czywpracy[0];
+
+
 	
 
 }else{
