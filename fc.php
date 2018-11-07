@@ -54,3 +54,29 @@ function insertlog($pracid, $stan ,$data){
 	}
 	$conn->close();
 }
+
+function controlTime ($date1, $date2)
+{
+	print_r('<br/>');
+	print_r($date1);
+	print_r('<br/>');
+	print_r($date2);
+	$dateTime1 = new DateTime($date1);
+	$dateTime2 = new DateTime($date2);
+	$interval = $dateTime1->diff($dateTime2);
+	print_r('<br/>');
+	var_dump($interval);
+	if ($interval->y > 0) {
+		$interval->m += $interval->y * 12;
+		}
+	if ($interval->m > 0) {
+		$interval->d += $interval->m * 30;
+		}
+	if ($interval->d > 0) {
+		$interval->h += $interval->d * 60;
+		}
+	$diff = $interval->h . ':' . $interval->i . ':' . $interval->s;
+	print_r('<br/>');
+	var_dump($diff);
+	
+}
