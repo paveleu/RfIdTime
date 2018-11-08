@@ -1,9 +1,9 @@
 <?php
 
 return [
-	'host'=>'192.168.0.154',
+	'host'=>'localhost',
 	'login'=>'root',
-	'pass'=>'root',
+	'pass'=>'',
 	'name'=>'RfIdTime',
 ];
 

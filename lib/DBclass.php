@@ -2,7 +2,7 @@
 class DB
 {
 	private $connect;
-	private function __construct()
+	public function __construct()
 	{
 		$dbconf = require 'dbconf.php';
 		$this->connect = mysqli_connect($dbconf['host'], $dbconf['login'], $dbconf['pass'], $dbconf['name']);
@@ -11,15 +11,27 @@ class DB
     		return false;
 		}
 	}
+	
 	public function insert($sql)
 	{
 		if(mysqli_query($this->connect, $sql)){
     		return true;
 		} else {
     		return false;
+		}
 	}
+	
+	public function getRekord($sql)
+	{
+		$result = mysqli_query($this->connect, $sql);
+		if (mysqli_num_rows($result) > 0) {
+			$row = mysqli_fetch_assoc($result);
+			return $row;
+		} else {
+			return array();}
 	}
-	private function __desctruct()
+	
+	public function __desctruct()
 	{
 		mysqli_close($this->connect);
 	}
