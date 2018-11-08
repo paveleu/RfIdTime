@@ -30,7 +30,25 @@ class DB
 		} else {
 			return array();}
 	}
-	
+
+    public function select($sql)
+    {
+        $rows = array();
+        $result = mysqli_query($this->connect, $sql);
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $record = array();
+                foreach ($row as $key => $value) {
+                    $record[$key] = $row[$key];
+                }
+                $rows[] = $record;
+            };
+            return $rows;
+        } else {
+            return array();
+        }
+    }
+
 	public function __desctruct()
 	{
 		mysqli_close($this->connect);
