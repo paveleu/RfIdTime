@@ -14,11 +14,15 @@ const char* password = "jestemswiderek";
 const char* host = "192.168.10.3";
 const int httpPort = 80;
 
+int frequency=5000; 
+int buzzPin= D2; 
+
 //adres pliku log.php   192.168.10.3:80/log.php
 
 void setup()
 {
   pinMode(D1, OUTPUT);
+  pinMode(D3, OUTPUT);
   Serial.begin(9600);
   Serial.println("hello, this is a RFID node");
   
@@ -74,6 +78,16 @@ void handleRFID() {
     Serial.print("[FAILED]  (connection to ");
     Serial.print(host);
     Serial.println(" failed)");
+    tone(buzzPin, frequency*2);
+    digitalWrite(D3, HIGH);
+    delay(200);
+    tone(buzzPin, 10000);
+    delay(200);
+    tone(buzzPin, 10000);
+    delay(200);
+    noTone(buzzPin);
+    digitalWrite(D3, LOW);
+   delay(2000);
     return;
   }
   
@@ -81,6 +95,14 @@ void handleRFID() {
                "Host: " + host + "\r\n" +
                "Connection: close\r\n\r\n");
    Serial.print("[OK]");
+   tone(buzzPin, 5000);
+    digitalWrite(D1, HIGH);
+    delay(300);
+    noTone(buzzPin);
+    tone(buzzPin, 8000);
+    delay(200);
+    noTone(buzzPin);
+    digitalWrite(D1, LOW);
    delay(2000);
 }
 
