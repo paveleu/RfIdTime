@@ -35,4 +35,20 @@ class logTime
 		$sql = 'INSERT INTO `log` (`idlog`, `idprac`, `data`, `idoper`) VALUES (NULL, '.$pracid.', "'.$data.'", '.$stan.')';
 		return $this->db->insert($sql);
 	}
+
+    public function controlTime ($date1, $date2)
+    {
+        $dateTime1 = new DateTime($date1);
+        $dateTime2 = new DateTime($date2);
+        $interval = $dateTime1->diff($dateTime2);
+        if ($interval->d > 0) {
+            $interval->h += $interval->d * 60;
+        }
+        $diff = $interval->h . ':' . $interval->i . ':' . $interval->s;
+        if($interval->h > 15) {
+            return array('timeDiff' => $diff, 'overNight' => true);
+        } else {
+            return array('timeDiff' => $diff, 'overNight' => false);
+        }
+    }
 }
