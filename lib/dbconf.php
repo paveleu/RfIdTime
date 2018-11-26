@@ -1,9 +1,9 @@
 <?php
 
 return [
-	'host'=>'localhost',
-	'login'=>'root',
-	'pass'=>'',
-	'name'=>'RfIdTime',
+	'host'=>'sql7.freemysqlhosting.net',
+	'login'=>'sql7267129',
+	'pass'=>'B4NAvX3Gqm',
+	'name'=>'sql7267129',
 ];
 
