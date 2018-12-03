@@ -16,9 +16,7 @@ class logTime
 		$row = $this->db->getRekord($sql);
 		if (!empty($row)) {
  			return $row['idprac'];
-			print('sfasdf');
 		}else{
-			print('sfafsasdf');
     		return 0;
 		}
 	}
