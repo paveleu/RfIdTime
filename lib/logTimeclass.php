@@ -12,7 +12,7 @@ class logTime
 
 	public function getpracidfromrfid($rfid)
 	{
-		$sql = 'SELECT `idprac`, `cardrfid` FROM `rfid` LEFT JOIN `pracownicy` ON `pracownicy`.`rf_id` = `rfid`.`id_card` WHERE `cardrfid` = "'.$rfid.'"';
+		$sql = 'SELECT `idprac` FROM `pracownicy` WHERE `rf_id` = "'.$rfid.'"';
 		$row = $this->db->getRekord($sql);
 		if (!empty($row)) {
  			return $row['idprac'];

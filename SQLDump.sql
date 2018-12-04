@@ -1,23 +1,31 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Nov 07, 2018 at 03:12 PM
--- Server version: 5.6.38
--- PHP Version: 7.2.1
+-- Host: 127.0.0.1
+-- Czas generowania: 04 Gru 2018, 17:13
+-- Wersja serwera: 10.1.24-MariaDB
+-- Wersja PHP: 7.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
--- Database: `RfIdTime`
+-- Baza danych: `baza`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure forza table `log`
+-- Struktura tabeli dla tabeli `log`
 --
 
 CREATE TABLE `log` (
@@ -28,16 +36,21 @@ CREATE TABLE `log` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `log`
+-- Zrzut danych tabeli `log`
 --
 
 INSERT INTO `log` (`idlog`, `idprac`, `data`, `idoper`) VALUES
-(1, 2, '2018-11-07 13:50:00', 1);
+(1, 3, '2018-12-04 16:09:49', 1),
+(2, 3, '2018-12-04 16:09:55', 2),
+(3, 3, '2018-12-04 17:07:54', 1),
+(4, 3, '2018-12-04 17:07:59', 2),
+(5, 3, '2018-12-04 17:10:19', 1),
+(6, 3, '2018-12-04 17:10:22', 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `oper`
+-- Struktura tabeli dla tabeli `oper`
 --
 
 CREATE TABLE `oper` (
@@ -46,7 +59,7 @@ CREATE TABLE `oper` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `oper`
+-- Zrzut danych tabeli `oper`
 --
 
 INSERT INTO `oper` (`id_oper`, `opis`) VALUES
@@ -56,50 +69,48 @@ INSERT INTO `oper` (`id_oper`, `opis`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pracownicy`
+-- Struktura tabeli dla tabeli `pracownicy`
 --
 
 CREATE TABLE `pracownicy` (
   `idprac` int(11) NOT NULL,
   `nazwisko` varchar(10) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
   `imie` varchar(10) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
-  `rf_id` int(11) NOT NULL
+  `rf_id` varchar(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `pracownicy`
+-- Zrzut danych tabeli `pracownicy`
 --
 
 INSERT INTO `pracownicy` (`idprac`, `nazwisko`, `imie`, `rf_id`) VALUES
-(1, 'Kowalski', 'Adam', 3),
-(2, 'Kowalska', 'Anna', 6),
-(3, 'Markowska', 'Anna', 2);
+(1, 'Kowalski', 'Adam', '3'),
+(2, 'Ko', 'Ann', '111111'),
+(3, 'Markowska', 'Anna', '42681f0d'),
+(4, 'Adamski', 'Adam', 'none'),
+(12, 'Helena', 'Åšwiderek', '222233');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rfid`
+-- Struktura tabeli dla tabeli `user`
 --
 
-CREATE TABLE `rfid` (
-  `id_card` int(11) NOT NULL,
-  `cardrfid` varchar(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `user` (
+  `iduser` int(11) NOT NULL,
+  `nameuser` varchar(32) COLLATE utf8_polish_ci NOT NULL,
+  `passuser` varchar(32) COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
--- Dumping data for table `rfid`
+-- Zrzut danych tabeli `user`
 --
 
-INSERT INTO `rfid` (`id_card`, `cardrfid`) VALUES
-(1, 'none'),
-(2, '111111'),
-(3, '222222'),
-(4, '333333'),
-(5, '444444'),
-(6, '555555');
+INSERT INTO `user` (`iduser`, `nameuser`, `passuser`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3');
 
 --
--- Indexes for dumped tables
+-- Indeksy dla zrzutów tabel
 --
 
 --
@@ -120,56 +131,50 @@ ALTER TABLE `oper`
 -- Indexes for table `pracownicy`
 --
 ALTER TABLE `pracownicy`
-  ADD PRIMARY KEY (`idprac`),
-  ADD KEY `rfid` (`rf_id`);
+  ADD PRIMARY KEY (`idprac`);
 
 --
--- Indexes for table `rfid`
+-- Indexes for table `user`
 --
-ALTER TABLE `rfid`
-  ADD PRIMARY KEY (`id_card`);
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`iduser`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `log`
+-- AUTO_INCREMENT dla tabeli `log`
 --
 ALTER TABLE `log`
-  MODIFY `idlog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
+  MODIFY `idlog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
--- AUTO_INCREMENT for table `oper`
+-- AUTO_INCREMENT dla tabeli `oper`
 --
 ALTER TABLE `oper`
   MODIFY `id_oper` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
--- AUTO_INCREMENT for table `pracownicy`
+-- AUTO_INCREMENT dla tabeli `pracownicy`
 --
 ALTER TABLE `pracownicy`
-  MODIFY `idprac` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `idprac` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
--- AUTO_INCREMENT for table `rfid`
+-- AUTO_INCREMENT dla tabeli `user`
 --
-ALTER TABLE `rfid`
-  MODIFY `id_card` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
+ALTER TABLE `user`
+  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- Constraints for dumped tables
+-- Ograniczenia dla zrzutów tabel
 --
 
 --
--- Constraints for table `log`
+-- Ograniczenia dla tabeli `log`
 --
 ALTER TABLE `log`
   ADD CONSTRAINT `log_ibfk_1` FOREIGN KEY (`idoper`) REFERENCES `oper` (`id_oper`),
   ADD CONSTRAINT `log_ibfk_2` FOREIGN KEY (`idprac`) REFERENCES `pracownicy` (`idprac`);
+COMMIT;
 
---
--- Constraints for table `pracownicy`
---
-ALTER TABLE `pracownicy`
-  ADD CONSTRAINT `pracownicy_ibfk_1` FOREIGN KEY (`rf_id`) REFERENCES `rfid` (`id_card`);
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
