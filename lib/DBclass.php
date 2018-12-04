@@ -48,6 +48,15 @@ class DB
             return array();
         }
     }
+	
+	public function update($sql)
+	{
+		if(mysqli_query($this->connect, $sql)){
+    		return true;
+		} else {
+    		return false;
+		}
+	}
 
 	public function __desctruct()
 	{
