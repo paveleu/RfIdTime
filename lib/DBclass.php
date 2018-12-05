@@ -18,6 +18,7 @@ class DB
     		return true;
 		} else {
     		return false;
+			echo mysql_error($this);
 		}
 	}
 	

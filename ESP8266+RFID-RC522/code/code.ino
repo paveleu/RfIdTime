@@ -23,6 +23,7 @@ void setup()
 {
   pinMode(D1, OUTPUT);
   pinMode(D3, OUTPUT);
+  digitalWrite(D1, HIGH);
   Serial.begin(9600);
   Serial.println("hello, this is a RFID node");
   
@@ -54,6 +55,7 @@ void setup()
   
   SPI.begin();
   rfid.PCD_Init();
+  digitalWrite(D1, LOW);
 }
 
 void loop(void) {
@@ -100,7 +102,7 @@ void handleRFID() {
     delay(300);
     noTone(buzzPin);
     tone(buzzPin, 8000);
-    delay(200);
+    delay(800);
     noTone(buzzPin);
     digitalWrite(D1, LOW);
    delay(2000);

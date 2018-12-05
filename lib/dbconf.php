@@ -1,9 +1,9 @@
 <?php
 
 return [
-	'host'=>'sql7.freemysqlhosting.net',
-	'login'=>'sql7267129',
-	'pass'=>'B4NAvX3Gqm',
-	'name'=>'sql7267129',
+	'host'=>'127.0.0.1',
+	'login'=>'root',
+	'pass'=>'',
+	'name'=>'baza',
 ];
 
