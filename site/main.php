@@ -168,8 +168,8 @@
                   </td>
 				  <td>
                   				<?php
-									$res = explode(" ",$line["czas"]);
-									echo $res[1];
+								
+									echo $line["czas"];
 								?>  
                   </td>
 
