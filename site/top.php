@@ -57,6 +57,7 @@
         <li class="header">MENU</li>
         
 		<li><a href="index.php"><i class="fa fa-dashboard"></i> <span>Panel Główny</span></a></li>
+    <li><a href="index.php?s=workerlist"><i class="fa fa-group"></i> <span>Lista Pracowników</span></a></li>
 		
 		
         

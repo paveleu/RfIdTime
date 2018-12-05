@@ -21,5 +21,24 @@ class LOGIN
 			return false;
 		}
 	}
+	public function corect($login, $password)
+	{
+		$password = md5($password);
+		$conect = new DB;
+		$row = $conect->getRekord('SELECT * FROM user WHERE `nameuser`="'.$login.'"');
+		if(isset($row['nameuser'])){
+			if($row['nameuser']==$login && $row['passuser']==$password)
+			{
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+
+
+
 	
 }

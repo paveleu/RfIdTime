@@ -2,6 +2,7 @@
 session_start();
 require_once 'lib/logTimeclass.php';
 require_once 'lib/loginclass.php';
+require_once 'lib/fc.php';
 
 if(isset($_POST['login']) && isset($_POST['pass']))
 {
