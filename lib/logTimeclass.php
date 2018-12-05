@@ -51,4 +51,15 @@ class logTime
             return array('timeDiff' => $diff, 'overNight' => false);
         }
     }
+	
+	public function lastInTime ()
+    {
+		$sql = 'SELECT * FROM log ORDER BY idlog DESC LIMIT 1';
+		$row = $this->db->getRekord($sql);
+		if (!empty($row)) {
+ 			return $row['data'];
+		}else{
+    		return 'false';
+		}
+    }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 04 Gru 2018, 17:13
+-- Czas generowania: 05 Gru 2018, 20:59
 -- Wersja serwera: 10.1.24-MariaDB
 -- Wersja PHP: 7.1.6
 
@@ -31,21 +31,23 @@ SET time_zone = "+00:00";
 CREATE TABLE `log` (
   `idlog` int(11) NOT NULL,
   `idprac` int(11) NOT NULL,
-  `data` datetime NOT NULL,
-  `idoper` int(11) NOT NULL
+  `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `idoper` int(11) NOT NULL,
+  `data_wyj` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `czas` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Zrzut danych tabeli `log`
 --
 
-INSERT INTO `log` (`idlog`, `idprac`, `data`, `idoper`) VALUES
-(1, 3, '2018-12-04 16:09:49', 1),
-(2, 3, '2018-12-04 16:09:55', 2),
-(3, 3, '2018-12-04 17:07:54', 1),
-(4, 3, '2018-12-04 17:07:59', 2),
-(5, 3, '2018-12-04 17:10:19', 1),
-(6, 3, '2018-12-04 17:10:22', 2);
+INSERT INTO `log` (`idlog`, `idprac`, `data`, `idoper`, `data_wyj`, `czas`) VALUES
+(1, 2, '2018-12-05 19:31:36', 1, '2018-12-05 19:50:24', '0000-00-00 00:00:00'),
+(2, 3, '2018-12-05 19:29:48', 1, '2018-12-05 18:51:16', '0000-00-00 00:00:00'),
+(3, 3, '2018-12-04 16:07:54', 1, '2018-12-05 18:51:16', '0000-00-00 00:00:00'),
+(4, 3, '2018-12-05 19:29:48', 1, '2018-12-05 18:51:16', '0000-00-00 00:00:00'),
+(5, 3, '2018-12-04 16:10:19', 1, '2018-12-05 18:51:16', '0000-00-00 00:00:00'),
+(6, 3, '2018-12-05 19:30:55', 1, '0000-00-00 00:00:00', '2018-12-05 19:30:55');
 
 -- --------------------------------------------------------
 
@@ -157,7 +159,7 @@ ALTER TABLE `oper`
 -- AUTO_INCREMENT dla tabeli `pracownicy`
 --
 ALTER TABLE `pracownicy`
-  MODIFY `idprac` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idprac` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT dla tabeli `user`
 --

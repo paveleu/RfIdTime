@@ -28,6 +28,56 @@
             </div>
             <a href="index.php?s=workerlist" class="small-box-footer">Lista <i class="fa fa-arrow-circle-right"></i></a>
           </div>
+          
+        </div>
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3><?= ile("log","`data_wyj`='0000-00-00 00:00:00'") ?></h3>
+
+              <p>Obecni</p>
+            </div>
+            <div class="icon">
+              <i class="fa  fa-user"></i>
+            </div>
+			<a href="#" class="small-box-footer">Aktualnie w parcy </a>
+          </div>
+          
+        </div>
+		<div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3><?= ile("log","") ?></h3>
+
+              <p>Wszystkich wejść</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-sticky-note"></i>
+            </div>
+			<a href="index.php" class="small-box-footer">Logi <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+          
+        </div>
+		<div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3><?php
+			  $lastcon = new logTime;
+			  $res = $lastcon->lastInTime();
+			  $res = explode(" ",$res);
+			  echo $res[1];
+			  ?></h3>
+
+              <p>Ostatnie Weście</p>
+            </div>
+            <div class="icon">
+              <i class="glyphicon glyphicon-time" style="margin-top:20px;"></i>
+            </div>
+            <a href="#" class="small-box-footer">Sprawdź <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
         </div>
         <!-- ./col -->
         
