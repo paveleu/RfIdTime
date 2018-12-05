@@ -31,13 +31,12 @@ if ( isset($_POST['imie']) && isset($_POST['nazwisko']) )
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Lista Pracowników
+        Dodawanie Pracownika
         <small>Elektroniczna Ewidencja Czasu Pracy</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="index.php"><i class="fa fa-dashboard"></i> Panel Główny</a></li>
-        <li>Lista Pracowników</li>
-        <li class="active">Edycja</li>
+        <li class="active">Dodawanie Pracownika</li>
       </ol>
     </section>
 <?php

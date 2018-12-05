@@ -58,7 +58,7 @@
         
 		<li><a href="index.php"><i class="fa fa-dashboard"></i> <span>Panel Główny</span></a></li>
     <li><a href="index.php?s=workerlist"><i class="fa fa-group"></i> <span>Lista Pracowników</span></a></li>
-		
+    <li><a href="index.php?s=addworker"><i class="fa fa-user-plus"></i> <span>Dodawanie Pracownika</span></a></li>
 		
         
         <li class="header">SYSTEM</li>
