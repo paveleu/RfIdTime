@@ -25,30 +25,55 @@ class logTime
 		$sql = 'SELECT * FROM log WHERE idprac = "'.$pracid.'" ORDER BY idlog DESC LIMIT 1';
 		$row = $this->db->getRekord($sql);
 		if (!empty($row) > 0) {
- 			return [$row['idoper'], $row['data']];
+			if($row["data_wyj"]=="0000-00-00 00:00:00")
+			{
+				return [1 , $row["data"], $row["idlog"]];
+			} else return [2];
 		}else{
     		return [2];
 		}
 	}
 	
-	public function insertlog($pracid, $stan ,$data){
-		$sql = 'INSERT INTO `log` (`idlog`, `idprac`, `data`, `idoper`) VALUES (NULL, '.$pracid.', "'.$data.'", '.$stan.')';
+	public function insertlog($pracid ,$data){
+		$sql = 'INSERT INTO `log` (`idlog`, `idprac`, `data`, `idoper`) VALUES (NULL, '.$pracid.', "'.$data.'", "1")';
 		return $this->db->insert($sql);
 	}
 
-    public function controlTime ($date1, $date2)
+	public function updatelog($idlog ,$data){
+		$sql = 'UPDATE `log` SET `czas` = "'.$data.'" WHERE `log`.`idlog` = '.$idlog;
+		return $this->db->insert($sql);
+	}	
+	
+
+	
+	public function lastInTime ()
     {
-        $dateTime1 = new DateTime($date1);
-        $dateTime2 = new DateTime($date2);
-        $interval = $dateTime1->diff($dateTime2);
-        if ($interval->d > 0) {
-            $interval->h += $interval->d * 60;
-        }
-        $diff = $interval->h . ':' . $interval->i . ':' . $interval->s;
-        if($interval->h > 15) {
-            return array('timeDiff' => $diff, 'overNight' => true);
-        } else {
-            return array('timeDiff' => $diff, 'overNight' => false);
-        }
+		$sql = 'SELECT * FROM log ORDER BY idlog DESC LIMIT 1';
+		$row = $this->db->getRekord($sql);
+		if (!empty($row)) {
+ 			return $row['data'];
+		}else{
+    		return 'false';
+		}
     }
 }
+
+    function controlTime ($date1, $date2)
+    {
+$ts = strtotime($date1) - strtotime($date2);
+return $ts;
+    }
+	
+	function samptodate ($ts)
+    {
+		$date = new DateTime("@$ts");
+		return $date->format('Y-m-d H:i:s');
+
+    }
+
+	function czas ($ts)
+    {
+		$date = new DateTime("@$ts");
+		return $date->format('H:i:s');
+
+    }

@@ -1,5 +1,6 @@
 <h1>RfIdTime</h1>
 
+admin:admin
 
 <h2>ESP8266 + RFID</h2>
 
