@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 05 Gru 2018, 20:59
+-- Czas generowania: 05 Gru 2018, 23:02
 -- Wersja serwera: 10.1.24-MariaDB
 -- Wersja PHP: 7.1.6
 
@@ -34,7 +34,7 @@ CREATE TABLE `log` (
   `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `idoper` int(11) NOT NULL,
   `data_wyj` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
-  `czas` timestamp NULL DEFAULT NULL
+  `czas` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -42,12 +42,17 @@ CREATE TABLE `log` (
 --
 
 INSERT INTO `log` (`idlog`, `idprac`, `data`, `idoper`, `data_wyj`, `czas`) VALUES
-(1, 2, '2018-12-05 19:31:36', 1, '2018-12-05 19:50:24', '0000-00-00 00:00:00'),
-(2, 3, '2018-12-05 19:29:48', 1, '2018-12-05 18:51:16', '0000-00-00 00:00:00'),
-(3, 3, '2018-12-04 16:07:54', 1, '2018-12-05 18:51:16', '0000-00-00 00:00:00'),
-(4, 3, '2018-12-05 19:29:48', 1, '2018-12-05 18:51:16', '0000-00-00 00:00:00'),
-(5, 3, '2018-12-04 16:10:19', 1, '2018-12-05 18:51:16', '0000-00-00 00:00:00'),
-(6, 3, '2018-12-05 19:30:55', 1, '0000-00-00 00:00:00', '2018-12-05 19:30:55');
+(1, 2, '2018-12-05 19:31:36', 1, '2018-12-05 19:50:24', '00:00:00'),
+(2, 3, '2018-12-05 19:29:48', 1, '2018-12-05 18:51:16', '00:00:00'),
+(3, 3, '2018-12-04 16:07:54', 1, '2018-12-05 18:51:16', '00:00:00'),
+(4, 3, '2018-12-05 19:29:48', 1, '2018-12-05 18:51:16', '00:00:00'),
+(5, 3, '0000-00-00 00:00:00', 1, '2018-12-05 21:51:51', '00:00:10'),
+(6, 3, '2018-12-05 19:30:55', 1, '0000-00-00 00:00:00', '20:30:55'),
+(7, 1, '2018-12-05 21:54:59', 1, '2018-12-05 21:58:22', '00:03:23'),
+(8, 1, '2018-12-05 21:58:32', 1, '2018-12-05 21:58:34', '00:00:02'),
+(9, 1, '2018-12-05 21:58:35', 1, '2018-12-05 21:58:44', '00:00:09'),
+(10, 1, '2018-12-05 21:59:27', 1, '0000-00-00 00:00:00', NULL),
+(11, 13, '2018-12-05 22:00:04', 1, '2018-12-05 22:00:11', '00:00:07');
 
 -- --------------------------------------------------------
 
@@ -86,11 +91,12 @@ CREATE TABLE `pracownicy` (
 --
 
 INSERT INTO `pracownicy` (`idprac`, `nazwisko`, `imie`, `rf_id`) VALUES
-(1, 'Kowalski', 'Adam', '3'),
+(1, 'Kowalski', 'Jacek', '3'),
 (2, 'Ko', 'Ann', '111111'),
-(3, 'Markowska', 'Anna', '42681f0d'),
+(3, 'Markowska', 'Ania', '42681f0d'),
 (4, 'Adamski', 'Adam', 'none'),
-(12, 'Helena', 'Åšwiderek', '222233');
+(12, 'Helena', 'Åšwiderek', '222233'),
+(13, 'Kacper', 'Urzdelewic', '123456');
 
 -- --------------------------------------------------------
 
@@ -149,7 +155,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT dla tabeli `log`
 --
 ALTER TABLE `log`
-  MODIFY `idlog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idlog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT dla tabeli `oper`
 --
@@ -159,7 +165,7 @@ ALTER TABLE `oper`
 -- AUTO_INCREMENT dla tabeli `pracownicy`
 --
 ALTER TABLE `pracownicy`
-  MODIFY `idprac` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idprac` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT dla tabeli `user`
 --
