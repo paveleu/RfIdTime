@@ -11,7 +11,7 @@ if(isset($_GET['rfid'])){
 	$czywpracy = $logTime->czywpracy($pracid);
 	echo $czywpracy[0];
 	if($czywpracy[0]==2) $logTime->insertlog($pracid, 1, $data);
-	if($czywpracy[0]==1) $logTime->insertlog($pracid, 2, $data);
+	if($czywpracy[0]==1) $logTime->insertlog($pracid, 2, $data, $czywpracy[1], $czywpracy[2]);
 }else{
 	echo "false";
 }
