@@ -3,6 +3,7 @@ require_once 'DBclass.php';
 class logTime
 {
 
+
 	private $db;
 	
 	public function __construct()
@@ -56,12 +57,45 @@ class logTime
     		return 'false';
 		}
     }
+
+    public function getAllLogsTime($startDate, $endDate)
+    {
+        $sql = 'SELECT pracownicy.idprac, nazwisko, imie, data, czas FROM pracownicy LEFT JOIN log ON pracownicy.idprac=log.idprac WHERE data >= "' . $startDate . '" AND data <= "' . $endDate . '"';
+        $rows = $this->db->select($sql);
+        $tab = [];
+        foreach ($rows as $row){
+            $tab[$row['idprac']]['dane']['nazwisko'] = $row['nazwisko'];
+            $tab[$row['idprac']]['dane']['imie'] = $row['imie'];
+            if (!empty($row['czas'])) {
+                if (!empty($tab[$row['idprac']]['log'][explode(' ', $row['data'])[0]]['diff'])) {
+                    $temp = $tab[$row['idprac']]['log'][explode(' ', $row['data'])[0]]['diff'];
+                    $tab[$row['idprac']]['log'][explode(' ', $row['data'])[0]]['diff'] += $this->timeToSec($row['czas']);
+                } else {
+                    $tab[$row['idprac']]['log'][explode(' ', $row['data'])[0]]['diff'] = $this->timeToSec($row['czas']);
+                }
+            }
+        }
+        return $tab;
+    }
+
+    public function timeToSec($time)
+    {
+        $time = explode(":", $time);
+        return $time[0]*3600+$time[1]*60+$time[2];
+    }
+
+    public function secToTime($sekundy)
+    {
+        $czas = round($sekundy);
+        return sprintf('%02d:%02d:%02d', ($czas/3600),($czas/60%60), $czas%60);
+    }
+
 }
 
     function controlTime ($date1, $date2)
     {
-$ts = strtotime($date1) - strtotime($date2);
-return $ts;
+        $ts = strtotime($date1) - strtotime($date2);
+        return $ts;
     }
 	
 	function samptodate ($ts)
@@ -77,3 +111,4 @@ return $ts;
 		return $date->format('H:i:s');
 
     }
+
