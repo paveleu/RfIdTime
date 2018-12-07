@@ -18,9 +18,31 @@
             <div class="box-header">
               <h3 class="box-title">Baza Danych Wszystkich Pracowników</h3>
             </div>
-            <!-- /.box-header -->
+            <script>
+              $(document).ready(function(){
+                $("#myInput").on("keyup", function() {
+                  var value = $(this).val().toLowerCase();
+                  $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                  });
+                });
+              });
+            </script>
+<!-- /.box-header -->
             <div class="box-body">
+              <div class="row">
+              <div class="col-md-6">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <input type="text" class="form-control" placeholder="Szukaj" id="myInput">
+              </div>
+              </div>
+              <div class="col-md-6">
+              
             	<a href="?s=addworker"><button type="button" class="btn btn-block btn-success" style="width: auto; margin-bottom: 5px;">Dodaj pracownika</button></a>
+              </div>
+            </div>
+
               <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-12"><table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
 
                 <thead>
@@ -31,7 +53,7 @@
                 	<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 10px;">Edycja</th>
 
                 </thead>
-                <tbody>
+                <tbody id="myTable">
 <?php
 $workers = new DB;
 $row = $workers->select('SELECT * FROM pracownicy');

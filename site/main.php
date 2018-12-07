@@ -79,6 +79,7 @@
             <a href="#" class="small-box-footer">Sprawdź <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
+      </div>
 		<div class="col-md-6">
 		
           <div class="box">
