@@ -53,12 +53,12 @@ class Form
 
         foreach ($allTime as $rekord) {
             $pods = 0;
-            print('<tr>');
+            print('<tr id="prac_' . $rekord["dane"]["idprac"] . '">');
             print('<td>');
             print($rekord['dane']['nazwisko'] . ' ' . $rekord['dane']['imie']);
             print('</td>');
             foreach ($days as $day) {
-                print('<td>');
+                print('<td id="' . $rekord["dane"]["idprac"] . '_' . $day . '">');
                 if (isset($rekord['log'][$day])) {
                     $pods += $rekord['log'][$day]['diff'];
                     print($logTime->secToTime($rekord['log'][$day]['diff']));
