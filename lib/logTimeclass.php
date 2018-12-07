@@ -66,6 +66,7 @@ class logTime
         foreach ($rows as $row){
             $tab[$row['idprac']]['dane']['nazwisko'] = $row['nazwisko'];
             $tab[$row['idprac']]['dane']['imie'] = $row['imie'];
+            $tab[$row['idprac']]['dane']['idprac'] = $row['idprac'];
             if (!empty($row['czas'])) {
                 if (!empty($tab[$row['idprac']]['log'][explode(' ', $row['data'])[0]]['diff'])) {
                     $temp = $tab[$row['idprac']]['log'][explode(' ', $row['data'])[0]]['diff'];
