@@ -55,9 +55,9 @@ $site = 'login';
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
- <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
- <link rel="stylesheet" href="../../plugins/iCheck/all.css">
+  <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
+ <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+ <link rel="stylesheet" href="plugins/iCheck/all.css">
 
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -80,22 +80,22 @@ require_once 'site/'.$site.'.php';
 
 ?>
 
-<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
-<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
-<script src="../../plugins/input-mask/jquery.inputmask.js"></script>
-<script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="../../plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<script src="../../bower_components/moment/min/moment.min.js"></script>
-<script src="../../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<script src="../../bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
-<script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
-<script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="../../plugins/iCheck/icheck.min.js"></script>
-<script src="../../bower_components/fastclick/lib/fastclick.js"></script>
-<script src="../../dist/js/adminlte.min.js"></script>
-<script src="../../dist/js/demo.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/select2/dist/js/select2.full.min.js"></script>
+<script src="plugins/input-mask/jquery.inputmask.js"></script>
+<script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script src="bower_components/moment/min/moment.min.js"></script>
+<script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="plugins/iCheck/icheck.min.js"></script>
+<script src="bower_components/fastclick/lib/fastclick.js"></script>
+<script src="dist/js/adminlte.min.js"></script>
+<script src="dist/js/demo.js"></script>
 
   </body>
 
