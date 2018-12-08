@@ -1,5 +1,5 @@
 <?php
-require_once 'lib/logTimeclass.php';
+require_once '../lib/logTimeclass.php';
 class Form
 {
 
@@ -10,7 +10,7 @@ class Form
 
     public function addTable()
     {
-        print('<table>');
+        print('<table class="table table-striped">');
     }
 
     public function endTable()
@@ -37,28 +37,28 @@ class Form
 
         print('<br>');
         print('<tr>');
-        print('<td>');
+        print('<th>');
         print('nazwisko imie');
-        print('</td>');
+        print('</th>');
         foreach ($days as $day) {
-            print('<td>');
+            print('<th>');
             print($day);
-            print('</td>');
+            print('</th>');
 
         }
-        print('<td>');
+        print('<th>');
         print('podsumowanie');
-        print('</td>');
+        print('</th>');
         print('</tr>');
 
         foreach ($allTime as $rekord) {
             $pods = 0;
-            print('<tr id="prac_' . $rekord["dane"]["idprac"] . '">');
+            print('<tr  id="prac_' . $rekord["dane"]["idprac"] . '">');
             print('<td>');
             print($rekord['dane']['nazwisko'] . ' ' . $rekord['dane']['imie']);
             print('</td>');
             foreach ($days as $day) {
-                print('<td id="' . $rekord["dane"]["idprac"] . '_' . $day . '">');
+                print('<td class="day" id="' . $rekord["dane"]["idprac"] . '_' . $day . '" onclick="pobierzDzien(' . $rekord["dane"]["idprac"] . ', \'' . $day . '\')">');
                 if (isset($rekord['log'][$day])) {
                     $pods += $rekord['log'][$day]['diff'];
                     print($logTime->secToTime($rekord['log'][$day]['diff']));
@@ -83,4 +83,35 @@ class Form
             }
         }
 
+        public function oneDay($idprac, $day)
+        {
+            $logTime = new logTime;
+            $times = $logTime->getOneDay($idprac, $day);
+            print('<tr>');
+            print('<th>');
+            print('Godzina wejścia');
+            print('</th>');
+            print('<th>');
+            print('Godzina wyjścia');
+            print('</th>');
+            print('<th>');
+            print('Czas');
+            print('</th>');
+            print('</tr>');
+            foreach ($times as $time){
+                print('<tr>');
+                print('<td>');
+                print($time['data']);
+                print('</td>');
+                print('<td>');
+                if ($time['data_wyj'] != '0000-00-00 00:00:00') {
+                    print($time['data_wyj']);
+                }
+                print('</td>');
+                print('<td>');
+                print($time['czas']);
+                print('</td>');
+                print('</tr>');
+            }
+        }
 }

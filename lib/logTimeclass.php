@@ -60,7 +60,7 @@ class logTime
 
     public function getAllLogsTime($startDate, $endDate)
     {
-        $sql = 'SELECT pracownicy.idprac, nazwisko, imie, data, czas FROM pracownicy LEFT JOIN log ON pracownicy.idprac=log.idprac WHERE data >= "' . $startDate . '" AND data <= "' . $endDate . '"';
+        $sql = 'SELECT pracownicy.idprac, nazwisko, imie, data, czas FROM pracownicy LEFT JOIN log ON pracownicy.idprac=log.idprac WHERE data >= "' . $startDate . ' 00:00:00" AND data <= "' . $endDate . ' 23:59:59"';
         $rows = $this->db->select($sql);
         $tab = [];
         foreach ($rows as $row){
@@ -77,6 +77,13 @@ class logTime
             }
         }
         return $tab;
+    }
+
+    public function getOneDay($id, $day)
+    {
+        $sql = 'SELECT data, data_wyj, czas FROM `log` WHERE idprac = ' . $id . ' AND data like"' . $day . '%"';
+        $rows = $this->db->select($sql);
+        return $rows;
     }
 
     public function timeToSec($time)

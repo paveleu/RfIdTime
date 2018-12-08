@@ -3,7 +3,6 @@ session_start();
 require_once 'lib/logTimeclass.php';
 require_once 'lib/loginclass.php';
 require_once 'lib/fc.php';
-
 if(isset($_POST['login']) && isset($_POST['pass']))
 {
 	$login = new LOGIN;
@@ -58,6 +57,7 @@ $site = 'login';
   <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
  <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
  <link rel="stylesheet" href="plugins/iCheck/all.css">
+ <link rel="stylesheet" href="style.css">
 
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -96,6 +96,7 @@ require_once 'site/'.$site.'.php';
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
 <script src="dist/js/demo.js"></script>
+<script src="lib/js/functions.js"></script>
 
   </body>
 

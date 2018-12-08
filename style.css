@@ -1,0 +1,33 @@
+#zestawienie{
+    width:100% !important;
+    overflow: scroll !important;
+    overflow-y: hidden !important;
+    text-align: center;
+}
+
+.day:hover{
+    background: #dadada;
+    border: 3px inset #3c8dbc;
+
+}
+
+.topLayer{
+    width: 500px;
+    min-height: 200px;
+    position: absolute;
+    top: 200px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: 3px outset #3c8dbc;
+    text-align: center;
+    background: #ecf0f5;
+}
+
+#close{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 25px;
+    height: 25px;
+}
