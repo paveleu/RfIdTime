@@ -20,10 +20,11 @@ if ( isset($_POST['imie']) && isset($_POST['nazwisko']) && isset($_POST['rfid'])
   $name = htmlspecialchars($_POST['imie']);
   $surname = htmlspecialchars($_POST['nazwisko']);
   $rfid = htmlspecialchars($_POST['rfid']);
+  $tel = htmlspecialchars($_POST['tel']);
   
   
   $update = new DB;
-  $sql = 'UPDATE `pracownicy` SET `nazwisko`="'.$surname.'",`imie`="'.$name.'",`rf_id`="'.$rfid.'" WHERE `idprac`="'.$id.'"';
+  $sql = 'UPDATE `pracownicy` SET `nazwisko`="'.$surname.'",`imie`="'.$name.'",`rf_id`="'.$rfid.'",`tel`="'.$tel.'" WHERE `idprac`="'.$id.'"';
   if($update->update($sql)) $a=true;
   else $a=false;
 }
@@ -133,6 +134,10 @@ if(isset($_GET['del'])){
                 <div class="form-group">
                   <label for="exampleInputEmail1">Nzawisko</label>
                   <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nazwisko" name="nazwisko" value="<?= $row['nazwisko']?>" >
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Telefon</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Telefon" name="tel" value="<?= $row['tel']?>" >
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">RF ID</label>

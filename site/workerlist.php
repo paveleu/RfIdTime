@@ -47,10 +47,10 @@
 
                 <thead>
                 <tr role="row">
-                	<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 110px;">Nazwisko</th>
-                	<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 122px;">Imię</th>
-                	<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 92px;">RFID</th>
-                	<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 10px;">Edycja</th>
+                	<th style="width: 110px;">Nazwisko</th>
+                	<th style="width: 122px;">Imię</th>
+                	<th style="width: 92px;">RFID</th>
+                	<th style="width: 10px;">Edycja</th>
 
                 </thead>
                 <tbody id="myTable">
@@ -62,21 +62,26 @@ foreach($row as $line)
 {
 
 ?>
+<a href="?s=pracownik&id=<?= $line['idprac'] ?>">
               <tr role="row" class="odd">
                   <td class="sorting_1"><?= $line['nazwisko'] ?></td>
                   <td><?= $line['imie'] ?></td>
                   <td><?= $line['rf_id'] ?></td>
                  <td> 
 					<div class="btn-group">
+                      	<a href="?s=pracownik&id=<?= $line['idprac'] ?>">
+                      		<button type="button" class="btn btn-success"><i class="fa fa-fw   fa-lightbulb-o"></i></button>
+						</a>
 						<a href="?s=workeredit&id=<?= $line['idprac'] ?>">
                       		<button type="button" class="btn btn-warning"><i class="fa fa-fw fa-wrench"></i></button>
                       	</a>
                       	<a href="?s=workeredit&id=<?= $line['idprac']?>&del=1">
                       		<button type="button" class="btn btn-danger"><i class="fa fa-fw  fa-user-times"></i></button>
-						
+						</a>
                     </div>
                  </td>
                 </tr>
+</a>
 <?php
 }
 
