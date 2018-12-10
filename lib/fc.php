@@ -3,7 +3,7 @@ function ile($tab, $where)
 {
 	$sql = 'SELECT COUNT(*) AS "a" FROM '.$tab;
 
-	if(isset($where))
+	if(!empty($where))
 		if($where!=="")
 		{
 			$sql = $sql." WHERE ".$where;
@@ -36,5 +36,18 @@ function last15()
 	$res = $con->select($sql);
 	return $res;
 	
+
+}
+
+function first($pracid)
+{
+	$sql = 'SELECT data FROM log WHERE idprac = "'.$pracid.'" ORDER BY data ASC LIMIT 1';
+
+	$con = new DB;
+	$res = $con->select($sql);
+	if(isset($res['0']['data'])){
+	$out = explode(" ", $res['0']['data']);
+	return $out['0'];
+	} else return '-';
 
 }
