@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/pawel/lib/Formclass.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/Formclass.php';
 
 $form = new Form();
 if ($_POST['action'] == 'all') {
