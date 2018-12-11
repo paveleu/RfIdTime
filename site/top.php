@@ -63,7 +63,7 @@
 		
         
         <li class="header">SYSTEM</li>
-        <li><a href="index.php"><i class="fa fa-circle-o text-red"></i> <span>Użytkownicy</span></a></li>
+        <li><a href="?s=user"><i class="fa fa-circle-o text-red"></i> <span>Użytkownicy</span></a></li>
         <li><a href="?s=logout"><i class="fa fa-circle-o text-yellow"></i> <span>Wyloguj</span></a></li>
       </ul>
     </section>

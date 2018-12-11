@@ -41,8 +41,7 @@ function last15()
 
 function first($pracid)
 {
-	$sql = 'SELECT data FROM log WHERE idprac = "'.$pracid.'" ORDER BY data ASC LIMIT 1';
-
+	$sql = 'SELECT data FROM log WHERE idprac = "'.$pracid.'" ORDER BY idlog ASC LIMIT 1';
 	$con = new DB;
 	$res = $con->select($sql);
 	if(isset($res['0']['data'])){

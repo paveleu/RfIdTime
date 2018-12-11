@@ -11,13 +11,14 @@ MFRC522::MIFARE_Key key;
 // network settings
 const char* ssid = "ToJestWajFaj";
 const char* password = "jestemswiderek";
-const char* host = "192.168.10.3";
+const char* host = "192.168.1.3";
 const int httpPort = 80;
+IPAddress ip(192, 168, 1, 177);
 
 int frequency=5000; 
 int buzzPin= D2; 
 
-//adres pliku log.php   192.168.10.3:80/log.php
+//adres pliku log.php   192.168.0.3:80/log.php
 
 void setup()
 {
@@ -36,7 +37,9 @@ void setup()
     delay(624);
     Serial.print(".");
   }
-
+  tone(buzzPin, 1000);
+  delay(200);
+  noTone(buzzPin);
   Serial.println("");
   Serial.println("############################################################");
   Serial.print("Connected to SSID: ");
@@ -52,7 +55,9 @@ void setup()
   Serial.println("");
   Serial.println("ready, waiting for rfid card to hit me");
   Serial.println("");
-  
+  tone(buzzPin, 1000);
+  delay(200);
+  noTone(buzzPin);
   SPI.begin();
   rfid.PCD_Init();
   digitalWrite(D1, LOW);
