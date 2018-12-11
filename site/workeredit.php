@@ -10,7 +10,7 @@ if(isset($_POST['del']))
   if($con_corect->corect($logg, $pass))
   {
     $del_con = new DB;
-    $del_con -> insert('DELETE FROM `pracownicy` WHERE `pracownicy`.`idprac` = '.$id);
+    $del_con -> insert('UPDATE `pracownicy` SET `nazwisko`="Usunięto",`imie`="Usunięto",`rf_id`="",`tel`="" WHERE `pracownicy`.`idprac` = '.$id);
   }
  
 }
